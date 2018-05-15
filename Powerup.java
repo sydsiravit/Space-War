@@ -14,7 +14,7 @@ public class Powerup extends SpriteOval {
 		
     }
     
-    @Override
+
 	public void drawOval(Graphics2D g) {
 		if(y < Y_TO_FADE)
 			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));

@@ -65,6 +65,7 @@ public class GameEngine implements KeyListener, GameReporter{
 	private void process(){
 		if(Math.random() < difficulty){
 			generateEnemy();
+			generatePowerup();
 		}
 		
 		Iterator<Enemy> e_iter = enemies.iterator();
@@ -104,12 +105,18 @@ public class GameEngine implements KeyListener, GameReporter{
 
 		for(Enemy e : enemies){
 			er = e.getRectangle();
-			if(er.intersects(vr1) && barierStack1 == 0){
-				die();
+			if(er.intersects(vr1)){
+				if(barierStack1 == 0)
+					die();
+				else if (barierStack1 > 0)
+					barierStack1 -=1;
 				return;
 			}
-			if(er.intersects(vr2) && barierStack2 == 0){
-				die();
+			if(er.intersects(vr2)){
+				if(barierStack2 == 0)
+					die();
+				else if (barierStack2 > 0)
+					barierStack2 -= 1;
 				return;
 			}
 		}
